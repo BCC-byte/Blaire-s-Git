@@ -1,0 +1,852 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>W Medical Tourism — Full Strategic Overview 2026</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,400&family=DM+Mono:wght@400;500&display=swap');
+:root{
+  --bg:#f7f5f1;--surface:#fff;--s2:#f1ede6;--s3:#e6e1d8;
+  --border:rgba(0,0,0,.08);--border-md:rgba(0,0,0,.13);
+  --t1:#1a1916;--t2:#5f5e5a;--t3:#a09f99;
+  --navy:#0B1C3F;--gold:#B8944A;--gold-l:#D4AF6E;
+  --teal:#0F6E56;--teal-bg:#E1F5EE;--teal-t:#085041;
+  --blue:#185FA5;--blue-bg:#E6F1FB;--blue-t:#0C447C;
+  --amber:#854F0B;--amber-bg:#FEF3E2;--amber-t:#633806;
+  --red:#A32D2D;--red-bg:#FDEAEA;--red-t:#791F1F;
+  --r:10px;--rl:14px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+
+/* ── APP LAYOUT ── */
+body { font-family: 'DM Sans', sans-serif; background: var(--bg); color: var(--t1); font-size: 13px; line-height: 1.6; display: flex; height: 100vh; overflow: hidden; }
+
+/* ── LEFT SIDEBAR ── */
+.sidebar { width: 240px; background: var(--navy); flex-shrink: 0; display: flex; flex-direction: column; height: 100vh; overflow-y: auto; border-right: 1px solid var(--border-md); }
+.sidebar-header { padding: 30px 24px; border-bottom: 1px solid rgba(255,255,255,0.05); margin-bottom: 10px; }
+.sidebar-logo { font-family: 'DM Mono', monospace; font-size: 24px; font-weight: 600; color: var(--surface); letter-spacing: -1px; }
+.sidebar-logo span { color: var(--gold-l); }
+.sidebar-sub { font-size: 10px; color: rgba(255,255,255,0.5); text-transform: uppercase; letter-spacing: 1px; margin-top: 4px; font-family: 'DM Mono', monospace; }
+
+.nav-links { display: flex; flex-direction: column; padding-bottom: 30px; }
+.nav-links a { padding: 12px 24px; font-size: 12px; font-weight: 500; color: rgba(255,255,255,0.6); text-decoration: none; border-left: 3px solid transparent; transition: all 0.2s ease; cursor: pointer; }
+.nav-links a:hover { color: var(--surface); background: rgba(255,255,255,0.03); }
+.nav-links a.active { color: var(--gold-l); font-weight: 600; background: rgba(255,255,255,0.05); border-left-color: var(--gold-l); }
+
+/* ── MAIN CONTENT AREA ── */
+.main-content { flex: 1; height: 100vh; overflow-y: auto; scroll-behavior: smooth; padding: 40px 40px 80px; }
+.page { max-width: 1000px; margin: 0 auto; }
+.tab-content { display: none; animation: fadeIn 0.4s ease; }
+.tab-content.active { display: block; }
+@keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+
+/* ── TYPOGRAPHY & CARDS ── */
+.page-header { padding-bottom: 24px; margin-bottom: 24px; border-bottom: .5px solid var(--border); }
+.eyebrow { font-family: 'DM Mono', monospace; font-size: 10px; font-weight: 500; letter-spacing: 2px; text-transform: uppercase; color: var(--gold); margin-bottom: 8px; }
+.page-title { font-size: 30px; font-weight: 600; line-height: 1.15; margin-bottom: 8px; color: var(--navy); }
+.page-sub { font-size: 13px; color: var(--t2); max-width: 680px; line-height: 1.7; }
+
+.card { background: var(--surface); border: .5px solid var(--border); border-radius: var(--rl); padding: 24px; margin-bottom: 20px; }
+.card-title { font-size: 16px; font-weight: 600; color: var(--t1); margin-bottom: 16px; padding-bottom: 12px; border-bottom: .5px solid var(--border); display: flex; justify-content: space-between; align-items: center; }
+
+.g2 { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+.g3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+
+/* ── METRICS & UI ELEMENTS ── */
+.metric-box { background: var(--surface2); padding: 16px; border-radius: var(--r); position: relative; border: .5px solid var(--border); }
+.metric-label { font-family: 'DM Mono', monospace; font-size: 10px; color: var(--t3); text-transform: uppercase; font-weight: 600; letter-spacing: .5px; margin-bottom: 4px; }
+.metric-value { font-family: 'DM Mono', monospace; font-size: 24px; font-weight: 500; margin: 6px 0; color: var(--t1); line-height: 1.2;}
+.metric-sub { font-size: 11px; color: var(--t2); margin-top: 4px; line-height: 1.5; }
+
+.slider-group { margin-bottom: 16px; }
+.slider-group label { display: flex; justify-content: space-between; font-weight: 500; font-size: 12px; margin-bottom: 8px; color: var(--t1); }
+.slider-group label span:last-child { font-family: 'DM Mono', monospace; font-weight: 600; color: var(--navy); }
+input[type=range] { width: 100%; accent-color: var(--gold); height: 4px; border-radius: 2px; outline: none; }
+
+.master-box { background: var(--navy); color: white; padding: 24px; border-radius: var(--rl); text-align: center; border-bottom: 4px solid var(--gold); margin-top: 20px; }
+.master-box .val { font-family: 'DM Mono', monospace; font-size: 36px; font-weight: 600; color: var(--gold-l); margin: 10px 0; line-height: 1; }
+
+.info-alert { border-left: 3px solid var(--blue); background: var(--blue-bg); color: var(--blue-t); padding: 12px 16px; font-size: 12px; line-height: 1.7; margin-bottom: 20px; border-radius: 0 var(--r) var(--r) 0; }
+.warn-alert { border-left: 3px solid var(--amber); background: var(--amber-bg); color: var(--amber-t); padding: 12px 16px; font-size: 12px; line-height: 1.7; margin-bottom: 20px; border-radius: 0 var(--r) var(--r) 0; }
+
+.dash-nav { display:flex; gap:8px; margin-bottom:16px; border-bottom: 1px solid var(--border); padding-bottom:16px; overflow-x: auto;}
+.dash-tab { background:var(--surface2); border: .5px solid var(--border); padding: 8px 16px; border-radius: 20px; font-size: 11px; font-weight: 600; color: var(--t2); cursor: pointer; transition: all 0.2s; white-space: nowrap; font-family: 'DM Mono', monospace;}
+.dash-tab:hover { background: #e0e0e0; }
+.dash-tab.active { background:var(--navy); color:var(--gold-l); border-color:var(--navy); }
+
+/* ── TABLES ── */
+.tw { overflow-x: auto; border: .5px solid var(--border); border-radius: var(--rl); margin-bottom: 12px; background: var(--surface); }
+table.dt { width: 100%; border-collapse: collapse; font-size: 11px; min-width: 680px; }
+table.dt th { background: var(--surface2); padding: 10px 12px; text-align: right; font-weight: 600; color: var(--t2); white-space: nowrap; font-family: 'DM Mono', monospace; font-size: 10px; border-bottom: .5px solid var(--border); }
+table.dt th:first-child { text-align: left; font-family: 'DM Sans', sans-serif; }
+table.dt td { padding: 9px 12px; border-bottom: .5px solid var(--border); text-align: right; white-space: nowrap; font-family: 'DM Mono', monospace; font-weight: 500; color: var(--t1); }
+table.dt td:first-child { text-align: left; color: var(--t2); font-family: 'DM Sans', sans-serif; font-weight: 400; }
+table.dt tr.header-row td { font-weight: 600; color: var(--navy); background: var(--surface2); font-family: 'DM Sans', sans-serif; text-transform: uppercase; font-size: 10px; letter-spacing: .5px; }
+table.dt tr.sub-row td { color: var(--t3); border-bottom: none; padding-top: 4px; padding-bottom: 4px; font-size: 10px; }
+table.dt tr.sub-row td:first-child { padding-left: 24px; }
+table.dt tr.total-row td { font-weight: 600; border-top: 1px solid var(--border-md); border-bottom: 1px solid var(--border-md); background: var(--bg); color: var(--navy); }
+table.dt tr.highlight-row td { background: var(--amber-bg); color: var(--amber-t); font-weight: 600; border-bottom: none; }
+
+.chart-container { position: relative; height: 300px; width: 100%; margin-top: 20px; }
+
+/* ── MILESTONES ── */
+.eq-track{display:flex;border-radius:var(--rl);overflow:hidden;border:.5px solid var(--border);margin:16px 0; background: var(--surface);}
+.eq-step{flex:1;padding:16px 10px;text-align:center;border-right:.5px solid var(--border)}
+.eq-step:last-child{border-right:none}
+.eq-pct{font-family:'DM Mono',monospace;font-size:28px;font-weight:600;line-height:1;margin-bottom:4px}
+.eq-badge{font-size:9px;font-weight:600;letter-spacing:.8px;padding:2px 6px;border-radius:3px;display:inline-block;margin-bottom:6px}
+.eq-rev{font-size:11px;font-weight:500;margin-bottom:4px}
+.eq-det{font-size:10px;color:var(--t3);line-height:1.45}
+
+.ms-row{display:grid;grid-template-columns:46px 1fr 160px 150px 150px;gap:12px;align-items:start;padding:14px 0;border-bottom:.5px solid var(--border)}
+.ms-row:last-child{border-bottom:none}
+.ms-dot{width:38px;height:38px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:600;flex-shrink:0;font-family:'DM Mono',monospace}
+.ms-title{font-size:13px;font-weight:600;color:var(--t1);margin-bottom:2px}
+.ms-sub{font-size:11px;color:var(--t2);line-height:1.6}
+.ms-num{font-family:'DM Mono',monospace;font-size:22px;font-weight:600;line-height:1;margin-bottom:4px}
+.ms-numlbl{font-size:10px;color:var(--t3)}
+.ms-val{font-family:'DM Mono',monospace;font-size:18px;font-weight:600;line-height:1;margin-bottom:4px}
+.ms-vallbl{font-size:10px;color:var(--t3)}
+
+/* ── FEE STRIP ── */
+.fee-strip{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:16px 0}
+.fee-card{background:var(--surface);border:.5px solid var(--border);border-radius:var(--rl);padding:16px;border-top-width:3px}
+.fee-type{font-size:10px;font-weight:600;letter-spacing:.8px;margin-bottom:6px;font-family:'DM Mono',monospace}
+.fee-amount{font-family:'DM Mono',monospace;font-size:24px;font-weight:600;line-height:1;margin-bottom:4px}
+.fee-label{font-size:11px;color:var(--t2);margin-bottom:10px}
+.fee-detail{font-size:11px;color:var(--t2);line-height:1.65}
+</style>
+</head>
+<body>
+
+<div class="sidebar">
+  <div class="sidebar-header">
+    <div class="sidebar-logo">W <span>Entity</span></div>
+    <div class="sidebar-sub">Master Strategic Plan</div>
+  </div>
+  <div class="nav-links">
+    <a onclick="openTab('tab1', this)" class="active">1. Structure & Value Prop</a>
+    <a onclick="openTab('tab2', this)">2. Earn-Up & Capital</a>
+    <a onclick="openTab('tab3', this)">3. Fees & Waterfall</a>
+    <a onclick="openTab('tab4', this)">4. VC Unit Econ Sandbox</a>
+    <a onclick="openTab('tab5', this)">5. P&L & Scenarios</a>
+  </div>
+</div>
+
+<div class="main-content" id="main-scroll">
+
+  <div id="tab1" class="tab-content active">
+    <div class="page-header">
+      <div class="eyebrow">Architecture</div>
+      <div class="page-title">Structure & Value Prop</div>
+      <div class="page-sub">The execution engine and aggregator architecture driving the dual-revenue pivot.</div>
+    </div>
+
+    <div class="card" style="background: var(--navy); color: white; border: none; padding: 32px; border-bottom: 4px solid var(--gold);">
+        <h3 style="color: var(--gold-l); font-size: 18px; margin-bottom: 12px; font-family: 'DM Sans', sans-serif; font-weight: 600;">The Core Value Proposition</h3>
+        <p style="font-size: 15px; line-height: 1.6; color: rgba(255,255,255,0.9); font-weight: 400; max-width: 900px; margin:0;">
+          <strong>Foundry Partners</strong> is the execution engine that makes every number in this model real. We bring the <strong>Management, BD, EU/ME Agent Networks, MOTAC Travel Operations, Regional Clinic Partnerships, Patient Acquisition Strategies</strong>, and the daily tactical decisions that turn a dormant entity into a RM 50M business. <span style="color: var(--gold-l); font-weight: 600;">This capability cannot be bought off a shelf.</span>
+        </p>
+    </div>
+    
+    <div class="g2">
+      <div class="card" style="border-top: 3px solid var(--navy);">
+        <div class="card-title">Foundry Partners Structure (The Shield)</div>
+        <p style="font-size: 12px; color: var(--t2); margin-bottom: 16px;">Acting as the independent management face, Foundry Partners shields Dato's ownership to allow market-neutral partnerships.</p>
+        <ul style="font-size: 12px; color: var(--t1); line-height: 1.8; padding-left: 20px;">
+          <li><strong>Partner 2 (Finance/Strategy):</strong> Legal & Commercial Frameworks. Executes TDOX SLAs, B2B Agent MoUs, and Patient Liability compliance.</li>
+          <li><strong>Partner 3 (Experience/Ops):</strong> SOPs & Process Engineering. Maps the end-to-end patient journey, crisis management, MOTAC compliance, and financial routing.</li>
+          <li><strong style="color: var(--navy);">Partner 1 (BizDev):</strong> Commercialization & Go-To-Market. Drives product packaging, Agent sales toolkits, pipeline seeding, and live patient stress tests.</li>
+        </ul>
+      </div>
+
+      <div class="card" style="border-top: 3px solid var(--blue);">
+        <div class="card-title">Revenue Model Timeline</div>
+        <div style="font-size: 12px; color: var(--t1); line-height: 1.8;">
+          <strong style="display:block; color:var(--navy); margin-bottom:4px;">Phase 1: Dual Engine (Years 1-2)</strong>
+          <span style="color:var(--t2);">High-volume B2B OTAs. W captures 25% Medical Commission + 35% Travel Concierge margin.</span>
+          <br><br>
+          <strong style="display:block; color:var(--teal); margin-bottom:4px;">Phase 2: Medical Family Office (Year 3+)</strong>
+          <span style="color:var(--t2);">Pivot to Platinum UHNWIs. Launches "Zero-CAC" recurring VIP memberships to scale to RM 50M.</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="tab2" class="tab-content">
+    <div class="page-header">
+      <div class="eyebrow">Vesting Mechanics</div>
+      <div class="page-title">Strategic Earn-Up & Capital Tranches</div>
+      <div class="page-sub">Foundry Partners' performance-gated equity track based on cumulative high-water mark revenue milestones and the 3-Stage Seed Capital drawdown.</div>
+    </div>
+
+    <div class="info-alert">
+      <strong>The Seed Capital Tranches (RM 2.41M Facility):</strong> To ensure capital efficiency, Dato's facility is drawn in 3 stages. <strong>Tranche 1 (RM 500K)</strong> at Day 1 for launch operations and licensing. <strong>Tranche 2 (RM 750K)</strong> unlocks upon passing M1 to fund B2C marketing. <strong>Tranche 3 (RM 1.16M)</strong> unlocks at M2 as a safety reserve for regional scaling.
+    </div>
+
+    <div class="eq-track">
+      <div class="eq-step" style="background:var(--surface2)">
+        <div class="eq-pct" style="color:var(--t2)">10%</div>
+        <div class="eq-badge" style="background:var(--s3);color:var(--t2)">M1</div>
+        <div class="eq-rev" style="color:var(--t2)">Cum. Rev ≥ RM 250K</div>
+        <div class="eq-det">First revenue milestone hit. Equity officially vests.</div>
+      </div>
+      <div class="eq-step" style="background:var(--blue-bg)">
+        <div class="eq-pct" style="color:var(--blue-t)">20%</div>
+        <div class="eq-badge" style="background:#B5D4F4;color:var(--blue-t)">M2</div>
+        <div class="eq-rev" style="color:var(--blue-t)">Cum. Rev ≥ RM 5M</div>
+        <div class="eq-det">First real commercial scale. Both engines live.</div>
+      </div>
+      <div class="eq-step" style="background:var(--amber-bg)">
+        <div class="eq-pct" style="color:var(--amber-t)">30%</div>
+        <div class="eq-badge" style="background:#FAC775;color:var(--amber-t)">M3</div>
+        <div class="eq-rev" style="color:var(--amber-t)">Cum. Rev ≥ RM 15M</div>
+        <div class="eq-det">15% EBITDA Gate · Regional live · Loan tracking.</div>
+      </div>
+      <div class="eq-step" style="background:#FEF3E2">
+        <div class="eq-pct" style="color:var(--amber-t)">40%</div>
+        <div class="eq-badge" style="background:#FAC775;color:var(--amber-t)">M4</div>
+        <div class="eq-rev" style="color:var(--amber-t)">Cum. Rev ≥ RM 30M</div>
+        <div class="eq-det">Cumulative value. Loan fully repaid.</div>
+      </div>
+      <div class="eq-step" style="background:var(--teal-bg)">
+        <div class="eq-pct" style="color:var(--teal-t)">45%</div>
+        <div class="eq-badge" style="background:#5DCAA5;color:var(--teal-t)">M5</div>
+        <div class="eq-rev" style="color:var(--teal-t)">Cum. Rev ≥ RM 50M</div>
+        <div class="eq-det">The ultimate cumulative target · Hard cap forever.</div>
+      </div>
+    </div>
+
+    <div class="card" style="padding: 0 20px;">
+      <div style="display:grid;grid-template-columns:46px 1fr 160px 150px 150px;gap:12px;padding:16px 0 8px;border-bottom:.5px solid var(--border);">
+        <div></div>
+        <div style="font-size:10px;color:var(--t3); font-weight:600; text-transform:uppercase;">Milestone &amp; conditions</div>
+        <div style="font-size:10px;color:var(--t3); font-weight:600; text-transform:uppercase;">Cumulative Gate</div>
+        <div style="font-size:10px;color:var(--t3); font-weight:600; text-transform:uppercase;">Foundry Equity</div>
+        <div style="font-size:10px;color:var(--t3); font-weight:600; text-transform:uppercase;">Foundry Stake at Exit (7x)</div>
+      </div>
+      <div class="ms-row">
+        <div><div class="ms-dot" style="background:var(--s3);color:var(--t2);border:.5px solid var(--border-md)">M0</div></div>
+        <div><div class="ms-title">Probation Passed & Contract Lock-In</div><div class="ms-sub"><strong>Months 1-6 Probation:</strong> Complete the <em>Foundational Architecture & Commercialization</em> checklist (TDOX SLA, B2B Agent MoUs, SOPs, Pricing) and hit RM 45K Cumulative Gross Revenue. Upon passing, contract renews annually. No equity vests yet.</div></div>
+        <div><div class="ms-num" style="color:var(--t2)">RM 45K</div><div class="ms-numlbl">Probation Target</div></div>
+        <div><div class="ms-num" style="color:var(--t2)">0%</div><div class="ms-numlbl">Contract Locked</div></div>
+        <div><div class="ms-val" style="color:var(--t2)">—</div><div class="ms-vallbl">Setup Phase</div></div>
+      </div>
+      <div class="ms-row">
+        <div><div class="ms-dot" style="background:var(--s3);color:var(--t2);border:.5px solid var(--border-md)">M1</div></div>
+        <div><div class="ms-title">The Foundation Lock-in</div><div class="ms-sub">The day W Entity banks its 250,000th Ringgit, the business is proven. The first 10% equity permanently unlocks moving forward. No time limits.</div></div>
+        <div><div class="ms-num" style="color:var(--t2)">RM 250K</div><div class="ms-numlbl">Cumulative Revenue</div></div>
+        <div><div class="ms-num" style="color:var(--t2)">10%</div><div class="ms-numlbl">Target: Year 1</div></div>
+        <div><div class="ms-val" style="color:var(--t2)">RM 0.24M</div><div class="ms-vallbl">Based on RM 2.41M Book Val</div></div>
+      </div>
+      <div class="ms-row">
+        <div><div class="ms-dot" style="background:var(--blue-bg);color:var(--blue-t)">M2</div></div>
+        <div><div class="ms-title">First Real Commercial Scale</div><div class="ms-sub">Cumulative W revenue ≥ RM 5M since inception. Proves the business model is working and generating real regional volume.</div></div>
+        <div><div class="ms-num" style="color:var(--blue-t)">RM 5M</div><div class="ms-numlbl">Cumulative Revenue</div></div>
+        <div><div class="ms-num" style="color:var(--blue-t)">20%</div><div class="ms-numlbl">Target: Year 2</div></div>
+        <div><div class="ms-val" style="color:var(--blue-t)">~RM 1.1M</div><div class="ms-vallbl">20% of 7X EBITDA multiple</div></div>
+      </div>
+      <div class="ms-row">
+        <div><div class="ms-dot" style="background:var(--amber-bg);color:var(--amber-t)">M3</div></div>
+        <div><div class="ms-title">Scale Confirmed (15% EBITDA Gate)</div><div class="ms-sub">Cumulative W revenue ≥ RM 15M. Requires minimum 15% EBITDA margin in the qualifying year to ensure profitable growth. Dato loan repayment visibly tracking.</div></div>
+        <div><div class="ms-num" style="color:var(--amber-t)">RM 15M</div><div class="ms-numlbl">15% EBITDA Gate</div></div>
+        <div><div class="ms-num" style="color:var(--amber-t)">30%</div><div class="ms-numlbl">Target: Year 3</div></div>
+        <div><div class="ms-val" style="color:var(--amber-t)">~RM 5.9M</div><div class="ms-vallbl">30% of 7X EBITDA multiple</div></div>
+      </div>
+      <div class="ms-row">
+        <div><div class="ms-dot" style="background:#FEF3E2;color:var(--amber-t)">M4</div></div>
+        <div><div class="ms-title">Exit-Ready — Loan Fully Repaid</div><div class="ms-sub">Cumulative W revenue ≥ RM 30M. Dato's loan must be fully repaid. 5-country hub fully active.</div></div>
+        <div><div class="ms-num" style="color:var(--amber-t)">RM 30M</div><div class="ms-numlbl">Cumulative / Loan Repaid</div></div>
+        <div><div class="ms-num" style="color:var(--amber-t)">40%</div><div class="ms-numlbl">Target: Year 4</div></div>
+        <div><div class="ms-val" style="color:var(--amber-t)">~RM 19.6M</div><div class="ms-vallbl">40% of 7X EBITDA multiple</div></div>
+      </div>
+      <div class="ms-row" style="border-bottom:none">
+        <div><div class="ms-dot" style="background:var(--teal-bg);color:var(--teal-t)">M5</div></div>
+        <div><div class="ms-title">The Ultimate 50M Achievement</div><div class="ms-sub">Cumulative W revenue ≥ RM 50M. Maximum equity unlocks only when maximum total value is delivered to Dato. Hard cap forever.</div></div>
+        <div><div class="ms-num" style="color:var(--teal-t)">RM 50M</div><div class="ms-numlbl">Cumulative Revenue</div></div>
+        <div><div class="ms-num" style="color:var(--teal-t)">45%</div><div class="ms-numlbl">Target: Year 5</div></div>
+        <div><div class="ms-val" style="color:var(--teal-t)">~RM 44.1M</div><div class="ms-vallbl">45% of 7X EBITDA multiple</div></div>
+      </div>
+    </div>
+
+    <div class="card" style="border-left: 3px solid var(--navy); background: var(--surface2);">
+      <h3 style="font-size: 14px; font-weight: 600; color: var(--navy); margin: 0 0 12px 0;">The "Fine Print" Protection Clauses</h3>
+      <ul style="font-size: 12px; color: var(--t1); line-height: 1.7; padding-left: 20px; margin: 0;">
+        <li style="margin-bottom: 8px;"><strong>6-Month Probation Failure:</strong> If Foundry Partners fails to hit the RM 45K and operational KPIs by Month 6, Dato has the right to terminate the contract without equity vesting.</li>
+        <li style="margin-bottom: 8px;"><strong>Cumulative High-Water Mark:</strong> Revenue targets are based on total historical revenue generated since inception. Milestones vest permanently, protecting Foundry Partners from an isolated bad year.</li>
+        <li style="margin-bottom: 8px;"><strong>Change of Control Acceleration:</strong> If Dato sells W Entity before M5, Foundry Partners' unvested equity instantly accelerates based on buyout valuation.</li>
+        <li><strong>Pro-Rata Dividends:</strong> After Dato's 65% loan sweep, any declared dividend from the remaining 35% pool is distributed pro-rata.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div id="tab3" class="tab-content">
+    <div class="page-header">
+      <div class="eyebrow">Financial Modeling</div>
+      <div class="page-title">Management Fees & The Dividend Waterfall</div>
+      <div class="page-sub">Interactive tool verifying how Foundry Partners is compensated on performance, and how Net Profit is legally distributed after Dato's 65% sweep.</div>
+    </div>
+
+    <div class="info-alert">
+      <strong>The Probation & Alignment Upgrade:</strong> By taking only RM 12K/mo (RM 4k per partner) and a discounted Success Fee during the 6-month probation, Foundry Partners fully de-risks the launch for Dato. Dato's total 6-month exposure is merely RM 72K while the expert infrastructure is built.
+    </div>
+
+    <div class="fee-strip">
+      <div class="fee-card" style="border-top-color:var(--blue)">
+        <div class="fee-type" style="color:var(--blue)">Management Fee</div>
+        <div class="fee-amount" style="color:var(--blue)">RM 12K → 100K</div>
+        <div class="fee-label">per month (milestone stepped)</div>
+        <div class="fee-detail">Scales efficiently with revenue milestones.<br>→ <strong>RM 12K/mo (Probation / Pre-M1)</strong><br>→ RM 20K/mo (M1: RM 250K+)<br>→ RM 30K/mo (M2: RM 5M+)<br>→ RM 50K/mo (M3: RM 15M+)<br>→ RM 75K/mo (M4: RM 30M+)<br>→ RM 100K/mo (M5: RM 50M+)</div>
+      </div>
+      <div class="fee-card" style="border-top-color:var(--teal)">
+        <div class="fee-type" style="color:var(--teal)">Performance Success Fee</div>
+        <div class="fee-amount" style="color:var(--teal)">20% → 30%</div>
+        <div class="fee-label">of W Entity Gross Profit</div>
+        <div class="fee-detail">Aligns Foundry Partners directly with profitability. Gives Dato a "Founder's Discount" early on.<br>→ <strong>20% of GP (Months 1-6 Probation)</strong><br>→ 25% of GP (M1 & M2)<br>→ 30% of GP (M3 to M5)</div>
+      </div>
+      <div class="fee-card" style="border-top-color:var(--amber)">
+        <div class="fee-type" style="color:var(--amber-t)">Dividend Waterfall</div>
+        <div class="fee-amount" style="color:var(--amber-t)">65% / 35%</div>
+        <div class="fee-label">Dato Sweep / Div Pool</div>
+        <div class="fee-detail">65% of Net Profit pays down Dato's RM 2.41M loan.<br>35% Pool split pro-rata based on unlocked equity. Drops to 0% sweep once loan is paid.</div>
+      </div>
+    </div>
+
+    <div class="card" style="border-top: 3px solid var(--navy); margin-top: 20px;">
+      <div class="card-title" style="border:none; padding-bottom: 0; margin-bottom: 8px;">The Setup Phase: Building the Machine (Months 1-6)</div>
+      <p style="font-size: 13px; color: var(--t1); margin-bottom: 20px; line-height: 1.6;">
+        In the consulting world, building the "machine" is always more expensive than operating it. Getting a medical tourism aggregator from zero to fully operational requires high-level legal, operational, and commercial architecture. At <strong>RM 4k per partner per month</strong> (RM 12,000 total), you are essentially giving Dato a "Pro-Bono" rate for what would normally be a <strong>RM 150,000+ consulting setup fee</strong>. Here are the deliverables to justify the ask:
+      </p>
+      <div class="g3">
+        <div class="metric-box" style="border-left: 3px solid var(--blue); padding: 16px;">
+          <div style="font-size: 12px; font-weight: 600; color: var(--blue); margin-bottom: 10px;">1. Legal & Commercial Frameworks</div>
+          <div style="font-size: 10px; color: var(--t3); text-transform: uppercase; font-weight: 600; margin-bottom: 8px;">Partner 2 - Finance/Strategy</div>
+          <ul style="font-size: 11px; color: var(--t2); line-height: 1.6; padding-left: 16px; margin: 0;">
+            <li style="margin-bottom: 6px;"><strong>TDOX Master SLA:</strong> Negotiating and locking in the 25% anchor commission and payment terms.</li>
+            <li style="margin-bottom: 6px;"><strong>B2B Agent MoU:</strong> Standardized legal agreements, commission tiers, and payout terms.</li>
+            <li style="margin-bottom: 6px;"><strong>Vendor Supply Chain:</strong> Negotiating "Unfair Advantage" corporate rates with 5-star hotels and luxury transport.</li>
+            <li><strong>Liability & Compliance:</strong> Structuring legal disclaimers between W Entity, patient, and clinic to protect against malpractice.</li>
+          </ul>
+        </div>
+        <div class="metric-box" style="border-left: 3px solid var(--teal); padding: 16px;">
+          <div style="font-size: 12px; font-weight: 600; color: var(--teal); margin-bottom: 10px;">2. SOPs & Business Process</div>
+          <div style="font-size: 10px; color: var(--t3); text-transform: uppercase; font-weight: 600; margin-bottom: 8px;">Partner 3 - Experience/Ops</div>
+          <ul style="font-size: 11px; color: var(--t2); line-height: 1.6; padding-left: 16px; margin: 0;">
+            <li style="margin-bottom: 6px;"><strong>Patient Journey Map:</strong> Documenting the exact step-by-step process from airport pick-up to post-op recovery.</li>
+            <li style="margin-bottom: 6px;"><strong>Crisis Management:</strong> Protocols for medical complications, flight delays, or logistical emergencies.</li>
+            <li style="margin-bottom: 6px;"><strong>MOTAC Compliance:</strong> Ensuring packages, invoices, and itineraries meet strict regulatory requirements.</li>
+            <li><strong>Financial Routing:</strong> Secure process for collecting international funds, paying TDOX, and agent bounties without bottlenecks.</li>
+          </ul>
+        </div>
+        <div class="metric-box" style="border-left: 3px solid var(--amber); padding: 16px;">
+          <div style="font-size: 12px; font-weight: 600; color: var(--amber-t); margin-bottom: 10px;">3. Commercialization & GTM</div>
+          <div style="font-size: 10px; color: var(--t3); text-transform: uppercase; font-weight: 600; margin-bottom: 8px;">Partner 1 - BizDev</div>
+          <ul style="font-size: 11px; color: var(--t2); line-height: 1.6; padding-left: 16px; margin: 0;">
+            <li style="margin-bottom: 6px;"><strong>Packaging & Pricing:</strong> Structuring and pricing the travel packages.</li>
+            <li style="margin-bottom: 6px;"><strong>Agent Sales Toolkits:</strong> Developing B2B pitch decks, clinic profiles, and doctor portfolios for agents to sell TDOX.</li>
+            <li style="margin-bottom: 6px;"><strong>Pipeline Seeding:</strong> Actively pitching initial network contacts and securing the first 3+ official B2B Agent MoUs.</li>
+            <li><strong>"Live" Stress Test:</strong> Successfully processing and executing the very first patient cases to prove the ecosystem.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="card" style="border-top: .5px solid var(--border); background: var(--surface); padding: 20px;">
+      <h3 style="font-size: 14px; font-weight: 600; color: var(--navy); margin: 0 0 10px 0;">Why retain the Management Fee at scale?</h3>
+      <p style="font-size: 12px; color: var(--t2); line-height: 1.6; margin: 0;">
+        The Management Fee is compensation for <em>labor</em> (running the daily operations of a RM 50M business), while Dividends are compensation for <em>ownership</em>. Hiring an external C-Suite (CEO, CMO, COO) for an enterprise of this size would cost W Entity upwards of RM 120,000/month. Even capped at Foundry's terminal RM 100,000/month fee, the fixed OPEX remains under 2.4% of revenue—a massive efficiency for Dato.
+      </p>
+    </div>
+
+    <div class="g2" style="align-items: start; margin-top:20px;">
+      <div class="card">
+        <div class="card-title">Dividend Distribution Simulator</div>
+        <div class="slider-container" style="background: transparent; border: none; padding: 0;">
+          <div class="slider-group">
+            <label><span>Simulated Annual Net Profit</span> <span id="w-val-np" style="color: var(--teal);">RM 2,000,000</span></label>
+            <input type="range" id="w-sl-np" min="500000" max="15000000" step="100000" value="2000000" style="accent-color: var(--teal);">
+          </div>
+          <div class="slider-group">
+            <label><span>Dato Loan Sweep %</span> <span id="w-val-sweep" style="color: var(--blue);">65%</span></label>
+            <input type="range" id="w-sl-sweep" min="0" max="100" step="5" value="65" style="accent-color: var(--blue);">
+          </div>
+          <div class="slider-group" style="margin-top: 25px;">
+            <label><span>Foundry Partners Unlocked Equity (M1-M5)</span> <span id="w-val-eq" style="color: var(--amber-t);">20%</span></label>
+            <input type="range" id="w-sl-eq" min="0" max="45" step="10" value="20" style="accent-color: var(--amber);">
+          </div>
+        </div>
+
+        <div style="display: flex; flex-direction: column; gap: 10px; margin-top:20px;">
+          <div class="metric-box" style="padding: 12px 16px; display: flex; justify-content: space-between; align-items: center; border-left: 4px solid var(--blue);">
+            <div>
+              <div class="metric-label" style="font-size: 9px;">1. Dato Priority Sweep</div>
+              <div style="font-size: 18px; font-weight: 600; color: var(--blue); font-family: 'DM Mono', monospace;" id="w-out-rep">RM 1,300,000</div>
+            </div>
+            <div style="font-size:10px; font-weight:600; color:var(--blue-t); background:var(--blue-bg); padding:4px 8px; border-radius:4px;">Direct to Loan</div>
+          </div>
+
+          <div class="metric-box" style="padding: 12px 16px; background: var(--surface); border: .5px dashed var(--border-md);">
+            <div style="display: flex; justify-content: space-between; font-size: 11px; color: var(--t2); font-weight: 500;">
+              <span>Remaining Dividend Pool:</span>
+              <span id="w-out-pool" style="font-family: 'DM Mono', monospace; font-weight: 600; color: var(--t1);">RM 700,000</span>
+            </div>
+          </div>
+
+          <div class="g2" style="gap: 10px; margin-bottom: 0;">
+            <div class="metric-box" style="padding: 12px; border-left: 3px solid var(--amber);">
+              <div class="metric-label" style="font-size: 9px;">2. Foundry Pro-Rata Div</div>
+              <div style="font-size: 14px; font-weight: 600; color: var(--amber-t); font-family: 'DM Mono', monospace;" id="w-out-abc-div">RM 140,000</div>
+            </div>
+            <div class="metric-box" style="padding: 12px; border-left: 3px solid var(--navy);">
+              <div class="metric-label" style="font-size: 9px;">3. Dato Pro-Rata Div</div>
+              <div style="font-size: 14px; font-weight: 600; color: var(--navy); font-family: 'DM Mono', monospace;" id="w-out-dato-div">RM 560,000</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card" style="padding: 24px; display: flex; flex-direction: column; height: 100%;">
+        <div class="card-title" style="border:none;">Total Cash Yield (This Scenario)</div>
+        <div class="master-box" style="margin-top:0;">
+          <div style="font-size: 10px; text-transform: uppercase; color: rgba(255,255,255,0.6); font-family: 'DM Mono', monospace; font-weight: 600;">Dato Total Cash Taken</div>
+          <div class="val" id="w-out-dato-total">RM 1,860,000</div>
+          <div style="font-size: 11px; color: var(--gold-l); margin-top: 2px; font-weight: 500;" id="w-out-dato-pct">Takes 93% of Total Cash</div>
+        </div>
+        <div class="chart-container" style="flex:1; min-height: 200px; margin-top: 20px;">
+          <canvas id="waterfallChart"></canvas>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="tab4" class="tab-content">
+    <div class="page-header">
+      <div class="eyebrow">Unit Economics</div>
+      <div class="page-title">VC Unit Economics Sandbox</div>
+      <div class="page-sub">Balance your marketing budgets. Prove how the "Zero-CAC Travel Upsell" drives down Blended CAC.</div>
+    </div>
+
+    <div class="g2">
+      <div style="display: flex; flex-direction: column; gap: 20px;">
+        <div class="card" style="border-top: 3px solid var(--blue); margin-bottom: 0;">
+          <div class="card-title" style="margin-bottom: 12px;">1. Medical Engine</div>
+          <div class="g2" style="margin-bottom: 12px; gap: 12px;">
+            <div class="slider-group" style="margin: 0;">
+              <div class="slider-header" style="display:flex; justify-content:space-between; font-size:11px; font-weight:600; margin-bottom:4px;"><span>B2B Pts</span><span id="val-s4-b2b-vol" style="color: var(--blue);">30</span></div>
+              <input type="range" id="sl-s4-b2b-vol" min="0" max="150" step="1" value="30" style="background: var(--blue-bg); accent-color: var(--blue);">
+            </div>
+            <div class="slider-group" style="margin: 0;">
+              <div class="slider-header" style="display:flex; justify-content:space-between; font-size:11px; font-weight:600; margin-bottom:4px;"><span>B2C Pts</span><span id="val-s4-b2c-vol" style="color: var(--amber-t);">10</span></div>
+              <input type="range" id="sl-s4-b2c-vol" min="0" max="150" step="1" value="10" style="background: var(--amber-bg); accent-color: var(--amber);">
+            </div>
+          </div>
+          <div class="g2" style="gap: 12px;">
+            <div class="slider-group" style="margin: 0;">
+              <div class="slider-header" style="display:flex; justify-content:space-between; font-size:11px; font-weight:600; margin-bottom:4px;"><span>Avg Spend</span><span id="val-s4-med-spend">RM 34k</span></div>
+              <input type="range" id="sl-s4-med-spend" min="5000" max="150000" step="1000" value="34000">
+            </div>
+            <div class="slider-group" style="margin: 0;">
+              <div class="slider-header" style="display:flex; justify-content:space-between; font-size:11px; font-weight:600; margin-bottom:4px;"><span>W Margin %</span><span id="val-s4-med-margin">25%</span></div>
+              <input type="range" id="sl-s4-med-margin" min="5" max="40" step="1" value="25">
+            </div>
+          </div>
+        </div>
+
+        <div class="card" style="border-top: 3px solid var(--teal); margin-bottom: 0;">
+          <div class="card-title" style="margin-bottom: 12px;">2. Travel Upsell</div>
+          <div class="slider-group" style="margin-bottom: 12px;">
+            <div class="slider-header" style="display:flex; justify-content:space-between; font-size:11px; font-weight:600; margin-bottom:4px;"><span>Take-up %</span><span id="val-s4-tvl-pct" style="color: var(--teal);">80%</span></div>
+            <input type="range" id="sl-s4-tvl-pct" min="0" max="100" step="5" value="80" style="background: var(--teal-bg); accent-color: var(--teal);">
+          </div>
+          <div class="g2" style="gap: 12px;">
+            <div class="slider-group" style="margin: 0;">
+              <div class="slider-header" style="display:flex; justify-content:space-between; font-size:11px; font-weight:600; margin-bottom:4px;"><span>Spend/Pkg</span><span id="val-s4-tvl-spend">RM 20k</span></div>
+              <input type="range" id="sl-s4-tvl-spend" min="5000" max="100000" step="1000" value="20000">
+            </div>
+            <div class="slider-group" style="margin: 0;">
+              <div class="slider-header" style="display:flex; justify-content:space-between; font-size:11px; font-weight:600; margin-bottom:4px;"><span>Margin %</span><span id="val-s4-tvl-margin">30%</span></div>
+              <input type="range" id="sl-s4-tvl-margin" min="10" max="50" step="1" value="30">
+            </div>
+          </div>
+        </div>
+
+        <div class="card" style="border-top: 3px solid var(--red); margin-bottom: 0;">
+          <div class="card-title" style="margin-bottom: 12px;">3. Marketing Cost</div>
+          <div class="slider-group" style="margin: 0;">
+            <div class="slider-header" style="display:flex; justify-content:space-between; font-size:11px; font-weight:600; margin-bottom:4px;"><span>Base CAC</span><span id="val-s4-cac" style="color: var(--red);">RM 6,000</span></div>
+            <input type="range" id="sl-s4-cac" min="2000" max="10000" step="250" value="6000" style="accent-color: var(--red);">
+          </div>
+        </div>
+      </div>
+
+      <div style="display: flex; flex-direction: column;">
+        <div class="card" style="border-top: 3px solid var(--gold); padding: 24px; display: flex; flex-direction: column; height: 100%;">
+          <div class="card-title">Model Health Check</div>
+          <div class="master-box" id="s4-master-box">
+            <div class="ml" style="font-size: 11px; text-transform: uppercase; color: rgba(255,255,255,0.6);">Gross Profit (Pre-OPEX)</div>
+            <div class="mv" id="out-s4-gp">RM 0</div>
+            <div style="font-size: 14px; font-weight: 600; color: #fff; font-family: 'DM Mono', monospace;" id="out-s4-margin">0%</div>
+          </div>
+          <div class="g2" style="margin-top: 16px; gap: 12px;">
+            <div class="metric-box" style="border-left: 3px solid var(--navy);">
+              <div class="metric-label">Blended CAC</div>
+              <div class="metric-value" id="out-s4-cac-total" style="font-size: 18px;">RM 0</div>
+            </div>
+            <div class="metric-box" style="border-left: 3px solid var(--teal);">
+              <div class="metric-label">Total Monthly Rev</div>
+              <div class="metric-value" id="out-s4-rev" style="font-size: 18px;">RM 0</div>
+            </div>
+          </div>
+          <div style="margin-top: 24px; flex: 1;">
+            <canvas id="sandboxChart"></canvas>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="tab5" class="tab-content">
+    <div class="page-header">
+      <div class="eyebrow">Financial Projections</div>
+      <div class="page-title">5-Year P&L & Scenarios</div>
+      <div class="page-sub">Dynamic waterfall enforcing the Cumulative Revenue Milestones, 15% EBITDA Gate, and Probation Fees.</div>
+    </div>
+
+    <div class="card" style="padding: 20px; background: var(--surface2); border: .5px solid var(--border);">
+      <div class="dash-nav" id="scenario-toggles" style="margin-bottom: 20px; border-bottom: none; padding-bottom: 0;">
+        <div class="dash-tab" onclick="setScenario('bear', this)">Bear Case (Slow Growth)</div>
+        <div class="dash-tab active" onclick="setScenario('base', this)">Base Case (Moderate)</div>
+        <div class="dash-tab" onclick="setScenario('bull', this)">Bull Case (Aggressive)</div>
+      </div>
+
+      <div class="g2" style="margin-bottom: 0; padding-top: 16px; border-top: .5px solid var(--border-md);">
+        <div class="slider-group" style="margin: 0;">
+          <label><span>TDOX Commission % (Revenue)</span> <span id="v_tdox_comm" style="color: var(--blue);">25%</span></label>
+          <input type="range" id="s_tdox_comm" min="10" max="40" step="1" value="25" style="accent-color: var(--blue);">
+        </div>
+        <div class="slider-group" style="margin: 0;">
+          <label><span>Foundry Success Fee % (Terminal Target)</span> <span id="v_abc_fee" style="color: var(--amber-t);">30%</span></label>
+          <input type="range" id="s_abc_fee" min="10" max="40" step="1" value="30" style="accent-color: var(--amber);">
+          <div style="font-size: 10px; color: var(--t3); margin-top: 4px; font-family: 'DM Mono', monospace;">*Year 1 automatically applies Founder's Discount (~22.5% blended rate based on probation).</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="g3" style="margin-bottom: 20px;">
+      <div class="metric-box" style="border-left: 4px solid var(--blue);">
+        <div class="metric-label">5-Year Cumulative Revenue</div>
+        <div class="metric-value" id="kpi-y5-rev" style="color: var(--navy); font-size: 26px;">RM 0 M</div>
+        <div class="metric-sub" id="kpi-y5-cap">M5 Cap Check</div>
+      </div>
+      <div class="metric-box" style="border-left: 4px solid var(--gold);">
+        <div class="metric-label">Year 5 Enterprise Value (7x)</div>
+        <div class="metric-value" id="kpi-y5-ev" style="color: var(--gold); font-size: 26px;">RM 0 M</div>
+        <div class="metric-sub">Based on Year 5 EBITDA</div>
+      </div>
+      <div class="metric-box" style="border-left: 4px solid var(--teal); background: var(--teal-bg);">
+        <div class="metric-label" style="color: var(--teal-t);">Dato's Total Cash ROI</div>
+        <div class="metric-value" id="kpi-dato-roi" style="color: var(--teal-t); font-size: 26px;">0.0x</div>
+        <div class="metric-sub" style="color: var(--teal-t);">5-Yr Divs + Sweep + Exit vs. RM 2.41M</div>
+      </div>
+    </div>
+
+    <div class="cw" style="height:320px;margin-bottom:20px"><canvas id="simChart"></canvas></div>
+
+    <div class="tw">
+      <table class="dt">
+        <thead>
+          <tr>
+            <th>Line Item (RM Millions)</th>
+            <th style="text-align: right;">Year 1</th>
+            <th style="text-align: right;">Year 2</th>
+            <th style="text-align: right;">Year 3</th>
+            <th style="text-align: right;">Year 4</th>
+            <th style="text-align: right;">Year 5</th>
+          </tr>
+        </thead>
+        <tbody id="pnl-body"></tbody>
+      </table>
+    </div>
+  </div>
+
+</div>
+
+<script>
+  // --- UTILS ---
+  const fmt = (num) => num.toLocaleString(undefined, {maximumFractionDigits: 0});
+  const fmtM = (num) => (num / 1000000).toFixed(2);
+  const fmtK = (num) => (num/1000).toFixed(0) + 'k';
+  
+  // Safe DOM helpers
+  const v = (id) => { const el = document.getElementById(id); return el ? parseFloat(el.value) : 0; };
+  const setT = (id, txt) => { const el = document.getElementById(id); if(el) el.innerHTML = txt; };
+
+  Chart.defaults.font.family = "'DM Mono', monospace";
+  Chart.defaults.color = '#a09f99';
+  let wfChart, sandboxChart, simCh;
+
+  function openTab(tabId, btn) {
+    document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
+    document.querySelectorAll('.nav-links a').forEach(el => el.classList.remove('active'));
+    const target = document.getElementById(tabId);
+    if(target) target.classList.add('active');
+    if(btn) btn.classList.add('active');
+    
+    if(tabId === 'tab3') calcWaterfall();
+    if(tabId === 'tab4') calcSandbox();
+    if(tabId === 'tab5') calcSim();
+  }
+
+  // --- TAB 3: WATERFALL ---
+  function calcWaterfall() {
+    let np = v('w-sl-np');
+    let sweepPct = v('w-sl-sweep') / 100;
+    let eqPct = v('w-sl-eq') / 100;
+    
+    setT('w-val-np', 'RM ' + fmt(np));
+    setT('w-val-sweep', (sweepPct * 100) + '%');
+    setT('w-val-eq', (eqPct * 100) + '%');
+
+    let rep = np * sweepPct;
+    let pool = np - rep;
+    let abcDiv = pool * eqPct;
+    let datoDiv = pool * (1 - eqPct);
+    
+    setT('w-out-rep', 'RM ' + fmt(rep));
+    setT('w-out-pool', 'RM ' + fmt(pool));
+    setT('w-out-abc-div', 'RM ' + fmt(abcDiv));
+    setT('w-out-dato-div', 'RM ' + fmt(datoDiv));
+    setT('w-out-dato-total', 'RM ' + fmt(rep + datoDiv));
+    setT('w-out-dato-pct', `Takes ${(((rep + datoDiv)/np)*100).toFixed(0)}% of Total Cash`);
+
+    if (!document.getElementById('tab3').classList.contains('active')) return;
+    const ctx = document.getElementById('waterfallChart');
+    if(!ctx) return;
+    if(wfChart) wfChart.destroy();
+    wfChart = new Chart(ctx.getContext('2d'), {
+      type: 'bar',
+      data: {
+        labels: ['NP Distribution'],
+        datasets: [
+          { label: 'Loan Sweep', data: [rep], backgroundColor: '#185FA5', borderRadius: 4 },
+          { label: 'Dato Div', data: [datoDiv], backgroundColor: '#0B1C3F', borderRadius: 4 },
+          { label: 'Foundry Div', data: [abcDiv], backgroundColor: '#B8944A', borderRadius: 4 }
+        ]
+      },
+      options: { indexAxis: 'y', responsive: true, maintainAspectRatio: false, scales: { x: { stacked: true, display:false }, y: { stacked: true, display:false } } }
+    });
+  }
+  document.querySelectorAll('#tab3 input').forEach(i => i.addEventListener('input', calcWaterfall));
+
+  // --- TAB 4: SANDBOX ---
+  function calcSandbox() {
+    let b2b = v('sl-s4-b2b-vol');
+    let b2c = v('sl-s4-b2c-vol');
+    let medVol = b2b + b2c;
+    let medSpend = v('sl-s4-med-spend');
+    let medMargin = v('sl-s4-med-margin') / 100;
+    let tvlPct = v('sl-s4-tvl-pct') / 100;
+    let tvlSpend = v('sl-s4-tvl-spend');
+    let tvlMargin = v('sl-s4-tvl-margin') / 100;
+    let baseCac = v('sl-s4-cac');
+
+    setT('val-s4-b2b-vol', b2b);
+    setT('val-s4-b2c-vol', b2c);
+    setT('val-s4-med-spend', 'RM ' + fmtK(medSpend));
+    setT('val-s4-med-margin', (medMargin*100)+'%');
+    setT('val-s4-tvl-pct', (tvlPct*100)+'%');
+    setT('val-s4-tvl-spend', 'RM ' + fmtK(tvlSpend));
+    setT('val-s4-tvl-margin', (tvlMargin*100)+'%');
+    setT('val-s4-cac', 'RM ' + fmt(baseCac));
+    
+    let medNetPerPt = medSpend * medMargin;
+    let tvlNetPerPkg = tvlSpend * tvlMargin;
+    setT('hint-s4-med-net', 'RM ' + fmt(medNetPerPt) + ' / pt');
+
+    let dynCac = Math.max(1500, baseCac - (Math.floor(medVol / 10) * 150));
+    let totalCac = medVol * dynCac;
+    let rev = (medVol * medNetPerPt) + (Math.round(medVol * tvlPct) * tvlNetPerPkg);
+    let gp = rev - totalCac;
+
+    setT('out-s4-rev', 'RM ' + fmt(rev));
+    setT('out-s4-cac-total', 'RM ' + fmt(medVol > 0 ? totalCac/medVol : 0));
+    setT('out-s4-gp', 'RM ' + fmt(gp));
+    setT('out-s4-margin', rev > 0 ? (gp/rev*100).toFixed(1)+'%' : '0%');
+
+    const mb = document.querySelector('#tab4 .master-box');
+    if(mb) {
+        if (gp < 0) { mb.style.background = 'var(--red-bg)'; mb.style.color = 'var(--red)'; }
+        else { mb.style.background = 'var(--navy)'; mb.style.color = 'white'; }
+    }
+
+    if (!document.getElementById('tab4').classList.contains('active')) return;
+    const ctx = document.getElementById('sandboxChart');
+    if(!ctx) return;
+    if(sandboxChart) sandboxChart.destroy();
+    sandboxChart = new Chart(ctx.getContext('2d'), {
+      type: 'bar',
+      data: {
+        labels: ['Distribution'],
+        datasets: [
+          { label: 'CAC Costs', data: [rev>0 ? (totalCac/rev)*100 : 0], backgroundColor: '#A32D2D', borderRadius: 4 },
+          { label: 'Gross Margin', data: [rev>0 ? (gp/rev)*100 : 0], backgroundColor: '#0F6E56', borderRadius: 4 }
+        ]
+      },
+      options: { responsive: true, maintainAspectRatio: false, scales: { x: { stacked: true, display:false }, y: { stacked: true, max: 100 } } }
+    });
+  }
+  document.querySelectorAll('#tab4 input').forEach(i => i.addEventListener('input', calcSandbox));
+
+  // --- TAB 5: P&L SCENARIOS ---
+  let currentScen = 'base';
+  const SCENARIO_DATA = {
+      bear: { ptsY5: 600, opexY5: 2500000 },
+      base: { ptsY5: 1800, opexY5: 4000000 },
+      bull: { ptsY5: 3500, opexY5: 6500000 }
+  };
+
+  function setScenario(scen, btn) {
+      currentScen = scen;
+      document.querySelectorAll('#scenario-toggles .dash-tab').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      calcSim();
+  }
+
+  function calcSim() {
+    let tdoxComm = v('s_tdox_comm') / 100;
+    let abcFeeBase = v('s_abc_fee') / 100; // Terminal Rate
+    
+    setT('v_tdox_comm', (tdoxComm*100)+'%');
+    setT('v_abc_fee', (abcFeeBase*100)+'%');
+
+    const sd = SCENARIO_DATA[currentScen];
+    const curves = { pts: [0.10, 0.25, 0.45, 0.70, 1.0], opex: [0.35, 0.45, 0.60, 0.80, 1.0] };
+    
+    // Explicit Management Fees based on new Market Rate Logic
+    const MGMT_ANNUAL = [
+      192000, // Y1: (6 mos @ 12k probation) + (6 mos @ 20k post-probation)
+      360000, // Y2: 12 mos @ 30k (M2 scaling)
+      600000, // Y3: 12 mos @ 50k (M3 confirmed)
+      900000, // Y4: 12 mos @ 75k (M4 mature)
+      1200000 // Y5: 12 mos @ 100k (M5 terminal rate)
+    ];
+    
+    let d = { pts:[], rev:[], gp:[], foundryFee:[], foundryMgmt:[], ebitda:[], np:[], rep:[], foundryDiv:[], datoDiv:[], bal:[], eq:[] };
+    let loanBal = 2410000;
+    let cumRev = 0;
+    let highestEq = 0.0; // Starts at 0% until RM 250K hit
+
+    for(let i=0; i<5; i++) {
+      let pts = Math.round(sd.ptsY5 * curves.pts[i]);
+      let dynCac = Math.max(1500, 6000 - (Math.floor(pts / 10) * 150));
+      
+      let medRev = pts * 40000 * tdoxComm; 
+      let tvlRev = Math.round(pts * 0.8) * 20000 * 0.30;
+      let rev = medRev + tvlRev;
+      cumRev += rev;
+      
+      let gp = rev - (pts * dynCac);
+      
+      // SUCCESS FEE LOGIC: Probation Discount applied to Year 1
+      let currentFeeRate = abcFeeBase;
+      if (i === 0) {
+        // Y1 Blended Rate: (6 mos @ 20% probation + 6 mos @ 25% post-probation).
+        // Assumes Terminal slider is set around 30%.
+        currentFeeRate = Math.max(0, abcFeeBase - 0.075); 
+      }
+      if (i === 1) {
+        currentFeeRate = Math.max(0, abcFeeBase - 0.05); // Y2 step up to 25% (if terminal is 30)
+      }
+      
+      let currentFoundryFee = Math.max(0, gp * currentFeeRate);
+      let mgmtFee = MGMT_ANNUAL[i];
+      
+      let opex = (sd.opexY5 * curves.opex[i]) + mgmtFee + currentFoundryFee;
+      let ebitda = rev - (pts * dynCac) - opex; // Gross Profit - OPEX
+      let np = ebitda > 0 ? ebitda * 0.76 : 0; // 24% tax
+
+      // CUMULATIVE RATCHET LOGIC 
+      let margin = rev > 0 ? ebitda/rev : 0;
+      let yrEq = 0.0;
+      if (cumRev >= 50000000) yrEq = 0.45;       // M5
+      else if (cumRev >= 30000000) yrEq = 0.40;  // M4
+      else if (cumRev >= 15000000 && margin >= 0.15) yrEq = 0.30; // M3
+      else if (cumRev >= 5000000) yrEq = 0.20;   // M2
+      else if (cumRev >= 250000) yrEq = 0.10;    // M1
+      
+      highestEq = Math.max(highestEq, yrEq);
+      
+      let rep = 0, pool = 0;
+      if (np > 0 && loanBal > 0) { rep = Math.min(np * 0.65, loanBal); loanBal -= rep; }
+      pool = np - rep;
+
+      d.pts.push(pts); d.rev.push(rev); d.gp.push(gp); 
+      d.foundryFee.push(currentFoundryFee); d.foundryMgmt.push(mgmtFee);
+      d.ebitda.push(ebitda); d.np.push(np); d.rep.push(rep); 
+      d.foundryDiv.push(pool * highestEq); d.datoDiv.push(pool * (1-highestEq));
+      d.bal.push(loanBal); d.eq.push(highestEq);
+    }
+
+    const row = (label, arr, cls="", isPct=false) => {
+        let tds = arr.map(val => `<td style="text-align:right; color:${(!isPct && val<0)?'var(--red)':''}">${isPct ? (val*100).toFixed(0)+'%' : (val<0 ? '('+fmtM(Math.abs(val))+')' : fmtM(val))}</td>`).join('');
+        return `<tr class="${cls}"><td>${label}</td>${tds}</tr>`;
+    };
+
+    let html = `<tr><td>Total Patients</td>${d.pts.map(p => `<td style="text-align:right;">${fmt(p)}</td>`).join('')}</tr>`;
+    html += row('Gross Retained Revenue', d.rev, 'total-row');
+    html += row('Gross Profit (Post-CAC)', d.gp);
+    html += row('Foundry Management Fee', d.foundryMgmt, 'sub-row');
+    html += row('Foundry Success Fee', d.foundryFee, 'sub-row');
+    html += row('EBITDA', d.ebitda, 'total-row');
+    html += row('Net Profit (Post-Tax)', d.np);
+    html += row('Active Foundry Equity %', d.eq, 'highlight-row', true);
+    html += row('Loan Sweep (65% Capped)', d.rep, 'highlight-row');
+    html += row('↳ Remaining Loan', d.bal, 'sub-row');
+    html += row('Foundry Pro-Rata Div', d.foundryDiv);
+    html += row('Dato Pro-Rata Div', d.datoDiv);
+
+    const tbody = document.getElementById('pnl-body');
+    if(tbody) tbody.innerHTML = html;
+
+    setT('kpi-y5-rev', 'RM ' + fmtM(cumRev) + ' M');
+    setT('kpi-y5-ev', 'RM ' + fmtM(Math.max(0, d.ebitda[4]*7)) + ' M');
+    
+    let datoTotalCash = d.rep.reduce((a,b)=>a+b,0) + d.datoDiv.reduce((a,b)=>a+b,0) + (Math.max(0, d.ebitda[4]*7) * (1-d.eq[4]));
+    setT('kpi-dato-roi', (datoTotalCash/2410000).toFixed(1) + 'x');
+
+    let capEl = document.getElementById('kpi-y5-cap');
+    if(capEl) {
+        if (cumRev >= 50000000) { capEl.innerText = "M5 Unicorn Cap Hit ✓"; capEl.style.color = "var(--teal)"; }
+        else { capEl.innerText = `Misses M5 Cap by RM ${fmtM(50000000 - cumRev)}M`; capEl.style.color = "var(--red)"; }
+    }
+
+    if (!document.getElementById('tab5').classList.contains('active')) return;
+    const ctx = document.getElementById('simChart');
+    if(!ctx) return;
+    if(simCh) simCh.destroy();
+    simCh = new Chart(ctx.getContext('2d'), {
+      type: 'bar',
+      data: {
+        labels: ['Year 1', 'Year 2', 'Year 3', 'Year 4', 'Year 5'],
+        datasets: [
+          { label: 'Revenue', data: d.rev.map(v=>Math.round(v/1000)), backgroundColor: '#0B1C3F', borderRadius: 4 },
+          { label: 'Foundry Success Fee', data: d.foundryFee.map(v=>Math.round(v/1000)), backgroundColor: '#B8944A', borderRadius: 4 },
+          { type: 'line', label: 'EBITDA', data: d.ebitda.map(v=>Math.round(v/1000)), borderColor: '#0F6E56', backgroundColor: 'rgba(15,110,86,0.1)', fill: true, tension: 0.4 }
+        ]
+      },
+      options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { display: false } }, scales: { x: { grid: { display: false } }, y: { grid: { color: 'rgba(0,0,0,0.05)' }, ticks: { callback: v => 'RM '+v+'k' } } } }
+    });
+  }
+  document.querySelectorAll('#tab5 input').forEach(i => i.addEventListener('input', calcSim));
+
+  // Initialize
+  window.onload = () => { 
+      calcWaterfall(); 
+      calcSandbox(); 
+      calcSim(); 
+  };
+</script>
+</body>
+</html>
